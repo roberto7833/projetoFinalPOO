@@ -2,15 +2,17 @@ package br.ufpb.roberto.filmes;
 
 import java.util.Objects;
 
-public class Midia {
+public abstract class Midia {
     private String titulo;
     private String genero;
     private int anoLancamento;
+    private double nota;
 
     public Midia(String titulo, String genero, int anoLancamento) {
         this.titulo = titulo;
         this.genero = genero;
         this.anoLancamento = anoLancamento;
+        this.nota = 0;
     }
     public String getTitulo() {
         return this.titulo;
@@ -30,8 +32,8 @@ public class Midia {
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
-    public int duracao(){
-        return duracao();
+    public double getNota(){
+        return this.nota;
     }
     @Override
     public String toString() {
@@ -47,4 +49,5 @@ public class Midia {
     public int hashCode() {
         return Objects.hash(titulo, genero, anoLancamento);
     }
+
 }

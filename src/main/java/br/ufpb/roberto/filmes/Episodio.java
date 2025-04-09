@@ -1,9 +1,9 @@
 package br.ufpb.roberto.filmes;
 
-public class Filme extends Midia{
+public class Episodio extends Midia{
     private int duracao;
 
-    public Filme(String titulo, String genero, int anoLancamento, int duracao){
+    public Episodio(String titulo, String genero, int anoLancamento, int duracao){
         super(titulo, genero, anoLancamento);
         this.duracao = duracao;
     }
@@ -12,9 +12,5 @@ public class Filme extends Midia{
     }
     public void setDuracao(int duracao) {
         this.duracao = duracao;
-    }
-    @Override
-    public String toString() {
-        return "[Filme] " + super.toString() + ", Duração: " + duracao + " min";
     }
 }
