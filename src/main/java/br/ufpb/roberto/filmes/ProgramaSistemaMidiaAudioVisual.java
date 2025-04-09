@@ -22,5 +22,19 @@ public class ProgramaSistemaMidiaAudioVisual {
         for (Midia m : sistema.mostrarTodasAsMidiasCadastradas()) {
             System.out.println(m);
         }
+        System.out.println("\nPesquisa por título contendo 'ar':");
+        for (Midia m : sistema.pesquisarPorTitulo("ar")) {
+            System.out.println(m);
+        }
+
+        System.out.println("\nPesquisa por ano de lançamento 2020:");
+        for (Midia m : sistema.pesquisarPorAnoLancamento(2020)) {
+            System.out.println(m);
+        }
+
+        System.out.println("\nPesquisa por gênero 'Drama':");
+        for (Midia m : sistema.pesquisarPorGenero("Drama")) {
+            System.out.println(m);
+        }
     }
 }
