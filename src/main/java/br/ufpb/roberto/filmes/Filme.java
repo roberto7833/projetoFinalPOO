@@ -3,10 +3,11 @@ package br.ufpb.roberto.filmes;
 public class Filme extends Midia{
     private int duracao;
 
-    public Filme(String titulo, String genero, int anoLancamento, int duracao){
-        super(titulo, genero, anoLancamento);
+    public Filme(String titulo, String genero, int anoLancamento, int duracao, double nota){
+        super(titulo, genero, anoLancamento, nota);
         this.duracao = duracao;
     }
+
     public int getDuracao() {
         return this.duracao;
     }
@@ -15,6 +16,6 @@ public class Filme extends Midia{
     }
     @Override
     public String toString() {
-        return "[Filme] " + super.toString() + ", Duração: " + duracao + " min";
+        return "Filme = [Título: " + super.getTitulo() + ", Ano de lançamento: " + super.getAnoLancamento() + ", Duração: " + duracao + " min]\n";
     }
 }

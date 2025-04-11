@@ -8,11 +8,11 @@ public abstract class Midia {
     private int anoLancamento;
     private double nota;
 
-    public Midia(String titulo, String genero, int anoLancamento) {
+    public Midia(String titulo, String genero, int anoLancamento, double nota) {
         this.titulo = titulo;
         this.genero = genero;
         this.anoLancamento = anoLancamento;
-        this.nota = 0;
+        this.nota = nota;
     }
     public String getTitulo() {
         return this.titulo;
@@ -35,10 +35,9 @@ public abstract class Midia {
     public double getNota(){
         return this.nota;
     }
-    @Override
-    public String toString() {
-        return "Filme "+this.titulo+" genero "+this.genero+", ano lançamento "+this.anoLancamento;
-    }
+
+    public abstract String toString();
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

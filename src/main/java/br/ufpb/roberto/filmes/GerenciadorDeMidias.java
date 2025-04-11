@@ -2,23 +2,18 @@ package br.ufpb.roberto.filmes;
 
 import java.util.*;
 
-public class MidiaAudioVisual implements SistemaMultimidia{
+public class GerenciadorDeMidias implements SistemaMultimidia{
     private Map<String, Midia> midias;
 
-    public MidiaAudioVisual(){
+    public GerenciadorDeMidias(){
         this.midias = new HashMap<>();
     }
-    public void cadastrarFilme(Filme filme)throws MidiaJaExisteException{
-        if(midias.containsKey(filme.getTitulo())){
-            throw new MidiaJaExisteException("Filme já cadastrado "+filme.getTitulo());
+
+    public void cadastrarMidia(Midia midia) throws MidiaJaExisteException{
+        if(midias.containsKey(midia.getTitulo())){
+            throw new MidiaJaExisteException("Midia já cadastrada: " + midia.getTitulo());
         }
-        midias.put(filme.getTitulo(), filme);
-    }
-    public void cadastrarSerie(Serie serie) throws MidiaJaExisteException {
-        if(midias.containsKey(serie.getTitulo())){
-            throw new MidiaJaExisteException("Serie já cadastrada "+serie.getTitulo());
-        }
-        midias.put(serie.getTitulo(), serie);
+        midias.put(midia.getTitulo(), midia);
     }
 
     public Collection<Midia> pesquisarPorTitulo(String titulo) {
@@ -30,6 +25,7 @@ public class MidiaAudioVisual implements SistemaMultimidia{
         }
         return tituloPesq;
     }
+
     public Collection<Midia> pesquisarPorAnoLancamento(int anoLancamento) {
         Collection<Midia> anoPesq = new ArrayList<>();
         for(Midia m: midias.values()){
@@ -39,6 +35,8 @@ public class MidiaAudioVisual implements SistemaMultimidia{
         }
         return anoPesq;
     }
+    //teste 1
+
     public Collection<Midia> pesquisarPorGenero(String genero) {
         Collection<Midia> generoPesq = new ArrayList<>();
         for(Midia m: midias.values()){
@@ -48,9 +46,11 @@ public class MidiaAudioVisual implements SistemaMultimidia{
         }
         return generoPesq;
     }
+
     public Collection<Midia> mostrarTodasAsMidiasCadastradas() {
         return midias.values();
     }
+
     public void atualizarMidia(String titulo, String novoTitulo, String novoGenero, int novoAnoLancamento) throws MidiaNaoExisteException{
         Midia midia = midias.get(titulo);
         if(midia==null) throw new MidiaNaoExisteException("midia não encontrada "+titulo);
@@ -60,13 +60,15 @@ public class MidiaAudioVisual implements SistemaMultimidia{
         midias.remove(titulo);
         midias.put(novoTitulo, midia);
     }
-    public void removerContato(String titulo) throws MidiaNaoExisteException {
+
+    public void removerMidia(String titulo) throws MidiaNaoExisteException {
         if(!midias.containsKey(titulo)){
             throw new MidiaNaoExisteException("midia não encontrada "+titulo);
         }else{
             midias.remove(titulo);
         }
     }
+
     public void salvarDados() {
 
     }
