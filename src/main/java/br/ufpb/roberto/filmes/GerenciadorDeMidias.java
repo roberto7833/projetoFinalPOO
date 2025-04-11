@@ -35,6 +35,7 @@ public class GerenciadorDeMidias implements SistemaMultimidia{
         }
         return anoPesq;
     }
+    //teste 1
 
     public Collection<Midia> pesquisarPorGenero(String genero) {
         Collection<Midia> generoPesq = new ArrayList<>();
