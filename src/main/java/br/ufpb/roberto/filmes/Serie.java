@@ -3,14 +3,13 @@ package br.ufpb.roberto.filmes;
 import java.util.List;
 
 public class Serie extends Midia{
-    private int duracao;
     private List<Episodio> episodios;
 
-    public Serie(String titulo, String genero, int anoLancamento, List<Episodio> episodios, int duracao){
-        super(titulo, genero, anoLancamento);
+    public Serie(String titulo, String genero, int anoLancamento, List<Episodio> episodios, double nota){
+        super(titulo, genero, anoLancamento, nota);
         this.episodios = episodios;
-        this.duracao = duracao;
     }
+
     public int getDuracao(){
         int somaDuracao = 0;
         for(Episodio e: this.episodios){
@@ -20,6 +19,6 @@ public class Serie extends Midia{
     }
     @Override
     public String toString() {
-        return "[Série] " + super.toString() + ", Episódios: " + episodios.size() + ", Duração total: "+duracao + " min";
+        return "Série = [título: " + super.getTitulo() + ", Episódios: " + episodios.size() + ", Duração total: " + this.getDuracao() + " min]\n";
     }
 }
