@@ -1,15 +1,19 @@
-package br.ufpb.roberto.filmes;
+package sistema;
+
+import sistema.exceptions.MidiaJaExisteException;
+import sistema.exceptions.MidiaNaoExisteException;
+import sistema.midias.Midia;
 
 import java.util.*;
 
-public class GerenciadorDeMidias implements SistemaMultimidia{
+public class GerenciadorDeMidias implements SistemaMultimidia {
     private Map<String, Midia> midias;
 
     public GerenciadorDeMidias(){
         this.midias = new HashMap<>();
     }
 
-    public void cadastrarMidia(Midia midia) throws MidiaJaExisteException{
+    public void cadastrarMidia(Midia midia) throws MidiaJaExisteException {
         if(midias.containsKey(midia.getTitulo())){
             throw new MidiaJaExisteException("Midia já cadastrada: " + midia.getTitulo());
         }
@@ -51,9 +55,9 @@ public class GerenciadorDeMidias implements SistemaMultimidia{
         return midias.values();
     }
 
-    public void atualizarMidia(String titulo, String novoTitulo, String novoGenero, int novoAnoLancamento) throws MidiaNaoExisteException{
+    public void atualizarMidia(String titulo, String novoTitulo, String novoGenero, int novoAnoLancamento) throws MidiaNaoExisteException {
+        if(!this.midias.containsKey(titulo)) throw new MidiaNaoExisteException("midia não encontrada " + titulo);
         Midia midia = midias.get(titulo);
-        if(midia==null) throw new MidiaNaoExisteException("midia não encontrada "+titulo);
         midia.setTitulo(novoTitulo);
         midia.setGenero(novoGenero);
         midia.setAnoLancamento(novoAnoLancamento);
@@ -67,6 +71,13 @@ public class GerenciadorDeMidias implements SistemaMultimidia{
         }else{
             midias.remove(titulo);
         }
+    }
+
+    public Midia getMidia(String titulo) throws MidiaNaoExisteException {
+        if (!this.midias.containsKey(titulo)) {
+            throw new MidiaNaoExisteException("Midia de titulo '" + titulo + "' não encontrada");
+        }
+        return this.midias.get(titulo);
     }
 
     public void salvarDados() {

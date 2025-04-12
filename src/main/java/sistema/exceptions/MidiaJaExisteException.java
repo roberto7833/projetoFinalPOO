@@ -1,4 +1,4 @@
-package br.ufpb.roberto.filmes;
+package sistema.exceptions;
 
 public class MidiaJaExisteException extends Exception{
 

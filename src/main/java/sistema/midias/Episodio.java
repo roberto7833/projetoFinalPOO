@@ -1,4 +1,4 @@
-package br.ufpb.roberto.filmes;
+package sistema.midias;
 
 public class Episodio {
     private String titulo;
