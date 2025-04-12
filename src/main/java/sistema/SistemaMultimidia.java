@@ -1,4 +1,8 @@
-package br.ufpb.roberto.filmes;
+package sistema;
+
+import sistema.exceptions.MidiaJaExisteException;
+import sistema.exceptions.MidiaNaoExisteException;
+import sistema.midias.Midia;
 
 import java.util.Collection;
 

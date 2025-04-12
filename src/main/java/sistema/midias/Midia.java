@@ -1,4 +1,4 @@
-package br.ufpb.roberto.filmes;
+package sistema.midias;
 
 import java.util.Objects;
 
@@ -34,6 +34,9 @@ public abstract class Midia {
     }
     public double getNota(){
         return this.nota;
+    }
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 
     public abstract String toString();
