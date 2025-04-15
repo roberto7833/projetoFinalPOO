@@ -1,5 +1,6 @@
-package sistema;
+package sistema.GUI;
 
+import sistema.GerenciadorDeMidias;
 import sistema.exceptions.MidiaJaExisteException;
 import sistema.exceptions.MidiaNaoExisteException;
 import sistema.midias.Episodio;
@@ -12,7 +13,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class MainJOptionPane {
     public static void main(String[] args) {
 
         GerenciadorDeMidias sistema = new GerenciadorDeMidias();
