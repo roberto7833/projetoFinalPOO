@@ -18,8 +18,6 @@ public class Main {
         GerenciadorDeMidias sistema = new GerenciadorDeMidias();
 
         boolean sair = false;
-        int teste1 = 1;
-        double teste2 = 1;
 
         while (!sair){
             int start = Integer.parseInt(JOptionPane.showInputDialog("1. Cadastrar Filme/Serie\n2. Pesquisa\n3. Mostrar Todas as mídias\n4. Atualizar mídia\n5. Remover mídia\n6. Sair"));
