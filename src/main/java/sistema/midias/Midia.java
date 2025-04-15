@@ -6,37 +6,66 @@ public abstract class Midia {
     private String titulo;
     private String genero;
     private int anoLancamento;
-    private double nota;
+    private String direcao;
+    private String [] elenco;
+    private String sinopse;
 
-    public Midia(String titulo, String genero, int anoLancamento, double nota) {
+    
+    public Midia(String titulo, String genero, int anoLancamento, String direcao, String[] elenco, String sinopse) {
         this.titulo = titulo;
         this.genero = genero;
         this.anoLancamento = anoLancamento;
-        this.nota = nota;
+        this.direcao = direcao;
+        this.elenco = elenco;
+        this.sinopse = sinopse;
     }
+
     public String getTitulo() {
-        return this.titulo;
+        return titulo;
     }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
     public String getGenero() {
-        return this.genero;
+        return genero;
     }
+
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
     public int getAnoLancamento() {
-        return this.anoLancamento;
+        return anoLancamento;
     }
+
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
-    public double getNota(){
-        return this.nota;
+
+    public String getDirecao() {
+        return direcao;
     }
-    public void setNota(double nota) {
-        this.nota = nota;
+
+    public void setDirecao(String direcao) {
+        this.direcao = direcao;
+    }
+
+    public String[] getElenco() {
+        return elenco;
+    }
+
+    public void setElenco(String[] elenco) {
+        this.elenco = elenco;
+    }
+
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
     }
 
     public abstract String toString();
@@ -51,5 +80,4 @@ public abstract class Midia {
     public int hashCode() {
         return Objects.hash(titulo, genero, anoLancamento);
     }
-
 }

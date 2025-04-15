@@ -8,6 +8,8 @@ import sistema.midias.Midia;
 import sistema.midias.Serie;
 
 import javax.swing.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -15,52 +17,41 @@ public class Main {
 
         GerenciadorDeMidias sistema = new GerenciadorDeMidias();
 
-        //Filmes pré-cadastrados para testes:
-        try {
-            sistema.cadastrarMidia(new Filme("A Origem", "Ficção Científica", 2010, 148, 4.5));
-            sistema.cadastrarMidia(new Filme("O Poderoso Chefão", "Drama/Crime", 1972, 175, 5.0));
-            sistema.cadastrarMidia(new Filme("Interestelar", "Ficção Científica", 2014, 169, 4.8));
-            sistema.cadastrarMidia(new Filme("Parasita", "Suspense/Drama", 2019, 132, 4.6));
-            sistema.cadastrarMidia(new Filme("Clube da Luta", "Drama", 1999, 139, 4.7));
-        } catch (MidiaJaExisteException e) {
-            e.printStackTrace();
-        }
-
         boolean sair = false;
 
         while (!sair){
             int start = Integer.parseInt(JOptionPane.showInputDialog("1. Cadastrar Filme/Serie\n2. Pesquisa\n3. Mostrar Todas as mídias\n4. Atualizar mídia\n5. Remover mídia\n6. Sair"));
             switch (start){
-                case 1: //Cadastrar Filme/Serie
+                case 1: //Cadastrar Mídia
                     start = Integer.parseInt(JOptionPane.showInputDialog("1. Filme\n2. Série:"));
-                    while (start != 1 && start != 2) {
-                        start = Integer.parseInt(JOptionPane.showInputDialog("Opção inválida. Escolha uma das opções abaixo:\n1. Filme\n2. Série:"));
-                    }
                     String titulo = JOptionPane.showInputDialog("Nome: ");
                     int ano = Integer.parseInt(JOptionPane.showInputDialog("Ano de lançamento: "));
                     String genero = JOptionPane.showInputDialog("Gênero: ");
-                    double nota = Double.parseDouble(JOptionPane.showInputDialog("Nota de 1 a 5: "));
+                    String direcao = JOptionPane.showInputDialog("Direção: ");
+                    String sinopse = JOptionPane.showInputDialog("Sinopse: ");
+                    String[] elenco = JOptionPane.showInputDialog("Elenco (nomes separados por virgula): ").split(",");
 
                     if (start == 1) {
                         int duracao = Integer.parseInt(JOptionPane.showInputDialog("Duração: ")); // A duração aqui evita que ele pergunte a duração da serie
-                        Midia filme = new Filme(titulo, genero, ano, duracao, nota);
-
+                        Filme filme = new Filme(titulo, genero, ano, direcao, elenco, sinopse, duracao);
                         try {
                             sistema.cadastrarMidia(filme);
-                            JOptionPane.showMessageDialog(null, filme.toString());
+                            JOptionPane.showMessageDialog(null, filme);
                         } catch (MidiaJaExisteException e) {
                             e.printStackTrace();
                         }
                     } else {
                         int quantEpsSerie = Integer.parseInt(JOptionPane.showInputDialog("Quantidade de episódios da série: "));
-                        int mediaDuracaoEpsSerie = Integer.parseInt(JOptionPane.showInputDialog("Duração média dos episódios da série: "));
 
-                        List<Episodio> eps = List.of(
-                                new Episodio("Episódio 1", 45),
-                                new Episodio("Episódio 2", 50)
-                        );
+                        List<Episodio> eps = new ArrayList<>();
+                        for (int i = 0; i < quantEpsSerie; i++) {
+                            String nomeEpisodio = JOptionPane.showInputDialog("Nome do episódio " + (i + 1) + ": ");
+                            int duracaoEpisodio = Integer.parseInt(JOptionPane.showInputDialog("Duração do episódio " + (i + 1) + ": "));
+                            Episodio episodio = new Episodio(nomeEpisodio, duracaoEpisodio);
+                            eps.add(episodio);
+                        }
 
-                        Midia serie = new Serie(titulo,genero, ano, quantEpsSerie, mediaDuracaoEpsSerie, nota);
+                        Serie serie = new Serie (titulo, genero, ano, direcao, elenco, sinopse, eps);
                         JOptionPane.showMessageDialog(null, serie.toString());
 
                         try {
@@ -99,11 +90,9 @@ public class Main {
                         String novoTitulo = JOptionPane.showInputDialog("Titulo: ");
                         String novoGenero = JOptionPane.showInputDialog("Gênero: ");
                         int novoAnoLancamento = Integer.parseInt(JOptionPane.showInputDialog("Ano de lançamento: "));;
-                        double novaNota = Double.parseDouble(JOptionPane.showInputDialog("Nota (1 a 5): "));;
                         sistema.getMidia(tituloAtualizar).setTitulo(novoTitulo);
                         sistema.getMidia(tituloAtualizar).setGenero(novoGenero);
                         sistema.getMidia(tituloAtualizar).setAnoLancamento(novoAnoLancamento);
-                        sistema.getMidia(tituloAtualizar).setNota(novaNota);
 
                         JOptionPane.showMessageDialog(null, "Midia atualizada com sucesso: " + sistema.getMidia(tituloAtualizar));
                     } catch (MidiaNaoExisteException m){
