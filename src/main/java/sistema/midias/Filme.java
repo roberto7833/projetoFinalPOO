@@ -1,21 +1,25 @@
 package sistema.midias;
 
 public class Filme extends Midia {
+
     private int duracao;
 
-    public Filme(String titulo, String genero, int anoLancamento, int duracao, double nota){
-        super(titulo, genero, anoLancamento, nota);
+    public Filme(String titulo, String genero, int anoLancamento, String direcao, String[] elenco, String sinopse, int duracao) {
+        super(titulo, genero, anoLancamento, direcao, elenco, sinopse);
         this.duracao = duracao;
     }
 
     public int getDuracao() {
         return this.duracao;
     }
+
     public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
+
     @Override
     public String toString() {
-        return "\nFilme = [Título: " + super.getTitulo() + ", Ano de lançamento: " + super.getAnoLancamento() + ", Duração: " + duracao + " minutos, Nota(" + super.getNota() + ")]";
+        return "[Filme = Título: " + super.getTitulo() + "\nAno de lançamento: " + super.getAnoLancamento()
+                + "\nDuração: " + duracao + " minutos\nDireção: " + super.getDirecao() + "\nGênero: " + super.getGenero() + "\nSinopse: " + super.getSinopse() + "\nElenco: " + String.join(", ", super.getElenco()) + "]\n";
     }
 }

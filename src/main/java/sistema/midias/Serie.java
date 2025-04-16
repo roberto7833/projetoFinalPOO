@@ -3,27 +3,30 @@ package sistema.midias;
 import java.util.List;
 
 public class Serie extends Midia {
-    private List<Episodio> episodios;
-    private int quantEps;
-    private int duracaoMediaEps;
 
-    public Serie(String titulo, String genero, int anoLancamento, int quantEps, int duracaoMediaEps, double nota){
-        super(titulo, genero, anoLancamento, nota);
+    private List<Episodio> episodios;
+
+    public Serie(String titulo, String genero, int anoLancamento, String direcao, String[] elenco, String sinopse, List<Episodio> episodios) {
+        super(titulo, genero, anoLancamento, direcao, elenco, sinopse);
         this.episodios = episodios;
-        this.quantEps = quantEps;
-        this.duracaoMediaEps = duracaoMediaEps;
     }
 
     public int getDuracaoTotal(){
-        return quantEps * duracaoMediaEps;
+        int cont = 0;
+        for (Episodio ep: episodios) {
+            cont += ep.getDuracao();
+        } return cont;
     }
 
     public int getDuracaoMediaEps(){
-        return this.duracaoMediaEps;
+        int cont = 0;
+        for (Episodio ep: episodios) {
+            cont += ep.getDuracao();
+        } return cont/episodios.size();
     }
 
     @Override
-    public String toString() {
-        return "\nSérie = [título: " + super.getTitulo() + ", Episódios: " + this.quantEps + ", Duração: " + this.getDuracaoMediaEps() + " min/ep, Nota(" + super.getNota() + ")]";
+    public String toString(){
+        return "[Série = título: " + super.getTitulo() + ", Episódios: " + episodios.size() + ", Duração: " + this.getDuracaoMediaEps() + " min/ep]\n";
     }
 }
