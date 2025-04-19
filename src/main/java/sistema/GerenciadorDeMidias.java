@@ -3,14 +3,18 @@ package sistema;
 import sistema.exceptions.MidiaJaExisteException;
 import sistema.exceptions.MidiaNaoExisteException;
 import sistema.midias.Midia;
+import sistema.midias.GravadorDeDados;
 
+import java.io.IOException;
 import java.util.*;
 
 public class GerenciadorDeMidias implements SistemaMultimidia {
-    private Map<String, Midia> midias;
+    private HashMap<String, Midia> midias;
+    private GravadorDeDados gravador;
 
     public GerenciadorDeMidias(){
         this.midias = new HashMap<>();
+        this.gravador = new GravadorDeDados();
     }
 
     public void cadastrarMidia(Midia midia) throws MidiaJaExisteException {
@@ -79,11 +83,12 @@ public class GerenciadorDeMidias implements SistemaMultimidia {
         }
         return this.midias.get(titulo);
     }
-
-    public void salvarDados() {
-
+    @Override
+    public void salvarDados()throws IOException {
+        this.gravador.salvarMidia(this.midias);
     }
-    public void recuperarDados() {
-
+    @Override
+    public void recuperarDados()throws IOException {
+        this.midias = this.gravador.recuperarMidia();
     }
 }

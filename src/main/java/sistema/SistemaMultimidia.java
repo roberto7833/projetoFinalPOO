@@ -4,6 +4,7 @@ import sistema.exceptions.MidiaJaExisteException;
 import sistema.exceptions.MidiaNaoExisteException;
 import sistema.midias.Midia;
 
+import java.io.IOException;
 import java.util.Collection;
 
 public interface SistemaMultimidia {
@@ -14,6 +15,6 @@ public interface SistemaMultimidia {
     Collection<Midia> mostrarTodasAsMidiasCadastradas();
     void atualizarMidia(String titulo, String novoTitulo, String novoGenero, int novoAnoLancamento)throws MidiaNaoExisteException;
     void removerMidia(String titulo)throws MidiaNaoExisteException;
-    void salvarDados();
-    void recuperarDados();
+    void salvarDados() throws IOException;
+    void recuperarDados()throws IOException;
 }
