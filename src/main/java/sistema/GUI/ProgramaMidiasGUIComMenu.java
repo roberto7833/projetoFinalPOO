@@ -2,6 +2,8 @@ package sistema.GUI;
 
 import sistema.SistemaMultimidia;
 import sistema.GerenciadorDeMidias;
+import sistema.controller.MidiaRemoveController;
+import sistema.controller.MidiaSearchController;
 import sistema.exceptions.MidiaJaExisteException;
 import sistema.exceptions.MidiaNaoExisteException;
 import sistema.midias.Episodio;
@@ -40,11 +42,17 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         menuCadastrar.add(menuCadastrarFilme);
         menuCadastrar.add(menuCadastrarSerie);
         JMenu menuPesquisar = new JMenu("pesquisar");
-        JMenuItem menuPesquisarPorTitulo = new JMenuItem("Digite o titulo");
-        menuPesquisar.add(menuPesquisarPorTitulo);
+        JMenuItem menuPesquisarMidias = new JMenuItem("pesquisar filmes é series");
+        menuPesquisar.add(menuPesquisarMidias);
+        JMenu menuRemover = new JMenu("Remover");
+        JMenuItem menuRemoverMidia = new JMenuItem("Remover Midia");
+        menuRemover.add(menuRemoverMidia);
+        menuPesquisarMidias.addActionListener(new MidiaSearchController(midias, this));
+        menuRemoverMidia.addActionListener(new MidiaRemoveController(midias, this));
 
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);
+        barraDeMenu.add(menuRemoverMidia);
         setJMenuBar(barraDeMenu);
     }
 
