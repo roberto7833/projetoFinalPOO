@@ -2,7 +2,7 @@ package sistema.midias;
 
 import java.util.Objects;
 
-public abstract class Midia {
+public class Midia {
     private String titulo;
     private String genero;
     private int anoLancamento;
@@ -68,7 +68,7 @@ public abstract class Midia {
         this.sinopse = sinopse;
     }
 
-    public abstract String toString();
+    //public abstract String toString();
 
     @Override
     public boolean equals(Object o) {
