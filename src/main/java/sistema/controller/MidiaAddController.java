@@ -1,6 +1,14 @@
 package sistema.controller;
 
+import sistema.GerenciadorDeMidias;
 import sistema.SistemaMultimidia;
+import sistema.exceptions.MidiaJaExisteException;
+import sistema.exceptions.MidiaNaoExisteException;
+import sistema.midias.Midia;
+import sistema.midias.MidiaFormulario;
+import sistema.midias.Filme;
+import sistema.midias.Serie;
+import sistema.midias.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,5 +28,5 @@ public class MidiaAddController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
 
+        }
     }
-}

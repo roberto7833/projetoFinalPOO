@@ -12,6 +12,7 @@ public interface SistemaMultimidia {
     Collection<Midia> pesquisarPorTitulo(String titulo);
     Collection<Midia> pesquisarPorAnoLancamento(int anoLancamento);
     Collection<Midia> pesquisarPorGenero(String genero);
+    Collection<Midia> pesquisarPorDirecao(String diretor);
     Collection<Midia> mostrarTodasAsMidiasCadastradas();
     void atualizarMidia(String titulo, String novoTitulo, String novoGenero, int novoAnoLancamento)throws MidiaNaoExisteException;
     void removerMidia(String titulo)throws MidiaNaoExisteException;

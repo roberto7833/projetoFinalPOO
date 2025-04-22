@@ -17,11 +17,12 @@ public class GerenciadorDeMidias implements SistemaMultimidia {
         this.gravador = new GravadorDeDados();
     }
 
-    public void cadastrarMidia(Midia midia) throws MidiaJaExisteException {
-        if(midias.containsKey(midia.getTitulo())){
-            throw new MidiaJaExisteException("Midia já cadastrada: " + midia.getTitulo());
+    public void cadastrarMidia(Midia midia)throws MidiaJaExisteException {
+        if(this.midias.containsKey(midia.getTitulo())){
+            throw new MidiaJaExisteException("já existe uma midia cadastrada com esse nome");
+        }else{
+            this.midias.put(midia.getTitulo(), midia);
         }
-        midias.put(midia.getTitulo(), midia);
     }
 
     public Collection<Midia> pesquisarPorTitulo(String titulo) {
@@ -53,6 +54,15 @@ public class GerenciadorDeMidias implements SistemaMultimidia {
             }
         }
         return generoPesq;
+    }
+    public Collection<Midia> pesquisarPorDirecao(String diretor){
+        Collection<Midia> diretorPesq = new ArrayList<>();
+        for(Midia m: midias.values()){
+            if(m.getDirecao().equalsIgnoreCase(diretor)){
+                diretorPesq.add(m);
+            }
+        }
+        return diretorPesq;
     }
 
     public Collection<Midia> mostrarTodasAsMidiasCadastradas() {
