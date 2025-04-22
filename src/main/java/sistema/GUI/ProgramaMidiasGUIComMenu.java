@@ -2,15 +2,7 @@ package sistema.GUI;
 
 import sistema.SistemaMultimidia;
 import sistema.GerenciadorDeMidias;
-import sistema.controller.MidiaRemoveController;
-import sistema.controller.MidiaSearchController;
-import sistema.exceptions.MidiaJaExisteException;
-import sistema.exceptions.MidiaNaoExisteException;
-import sistema.midias.Episodio;
-import sistema.midias.Filme;
-import sistema.midias.GravadorDeDados;
-import sistema.midias.Midia;
-import sistema.midias.Serie;
+import sistema.controller.*;
 
 
 import javax.swing.*;
@@ -37,22 +29,30 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         add(linha2);
         add(new JLabel());
         JMenu menuCadastrar = new JMenu("cadastrar");
-        JMenuItem menuCadastrarFilme = new JMenuItem("cadastrar filme");
-        JMenuItem menuCadastrarSerie = new JMenuItem("cadastrar serie");
-        menuCadastrar.add(menuCadastrarFilme);
-        menuCadastrar.add(menuCadastrarSerie);
+        JMenuItem menuCadastrarMidia = new JMenuItem("cadastrar Midia");
+        menuCadastrar.add(menuCadastrarMidia);
         JMenu menuPesquisar = new JMenu("pesquisar");
-        JMenuItem menuPesquisarMidias = new JMenuItem("pesquisar filmes é series");
-        menuPesquisar.add(menuPesquisarMidias);
+        JMenuItem menuPesquisarPorTitulo = new JMenuItem("pesquisar por titulo");
+        menuPesquisar.add(menuPesquisarPorTitulo);
+        JMenuItem menuPesquisarPorGenero = new JMenuItem("pesquisar por genero");
+        menuPesquisar.add(menuPesquisarPorGenero);
+        JMenuItem menuPesquisarPorAno = new JMenuItem("pesquisar por ano");
+        menuPesquisar.add(menuPesquisarPorAno);
+        JMenuItem menuPesquisarDiretor = new JMenuItem("pesquisar pelo diretor");
+        menuPesquisar.add(menuPesquisarDiretor);
         JMenu menuRemover = new JMenu("Remover");
         JMenuItem menuRemoverMidia = new JMenuItem("Remover Midia");
         menuRemover.add(menuRemoverMidia);
-        menuPesquisarMidias.addActionListener(new MidiaSearchController(midias, this));
+        menuPesquisarPorTitulo.addActionListener(new MidiaSearchTituloController(midias, this));
+        menuPesquisarPorGenero.addActionListener(new MidiaSearchGeneroController(midias, this));
+        menuPesquisarPorAno.addActionListener(new MidiaSearchAnoController(midias, this));
+        menuPesquisarDiretor.addActionListener(new MidiaSearchDiretorController(midias, this));
         menuRemoverMidia.addActionListener(new MidiaRemoveController(midias, this));
+        menuCadastrarMidia.addActionListener(new MidiaAddController(midias, this));
 
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);
-        barraDeMenu.add(menuRemoverMidia);
+        barraDeMenu.add(menuRemover);
         setJMenuBar(barraDeMenu);
     }
 

@@ -1,6 +1,8 @@
 package sistema.midias;
 
-public class Filme extends Midia {
+import java.io.Serializable;
+
+public class Filme extends Midia implements Serializable {
 
     private int duracao;
 
