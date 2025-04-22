@@ -17,11 +17,12 @@ public class GerenciadorDeMidias implements SistemaMultimidia {
         this.gravador = new GravadorDeDados();
     }
 
-    public void cadastrarMidia(Midia midia)throws MidiaJaExisteException {
+    public void cadastrarMidia(Midia midia) throws MidiaJaExisteException {
         if(this.midias.containsKey(midia.getTitulo())){
             throw new MidiaJaExisteException("já existe uma midia cadastrada com esse nome");
         }else{
             this.midias.put(midia.getTitulo(), midia);
+            //salvarDados();
         }
     }
 

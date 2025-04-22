@@ -29,10 +29,8 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         add(linha2);
         add(new JLabel());
         JMenu menuCadastrar = new JMenu("cadastrar");
-        JMenuItem menuCadastrarFilme = new JMenuItem("cadastrar filme");
-        JMenuItem menuCadastrarSerie = new JMenuItem("cadastrar serie");
-        menuCadastrar.add(menuCadastrarFilme);
-        menuCadastrar.add(menuCadastrarSerie);
+        JMenuItem menuCadastrarMidia = new JMenuItem("cadastrar Midia");
+        menuCadastrar.add(menuCadastrarMidia);
         JMenu menuPesquisar = new JMenu("pesquisar");
         JMenuItem menuPesquisarPorTitulo = new JMenuItem("pesquisar por titulo");
         menuPesquisar.add(menuPesquisarPorTitulo);
@@ -50,7 +48,7 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         menuPesquisarPorAno.addActionListener(new MidiaSearchAnoController(midias, this));
         menuPesquisarDiretor.addActionListener(new MidiaSearchDiretorController(midias, this));
         menuRemoverMidia.addActionListener(new MidiaRemoveController(midias, this));
-        menuCadastrarFilme.addActionListener(new MidiaAddController(midias, this));
+        menuCadastrarMidia.addActionListener(new MidiaAddController(midias, this));
 
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);

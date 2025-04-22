@@ -1,8 +1,9 @@
 package sistema.midias;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Midia {
+public class Midia implements Serializable {
     private String titulo;
     private String genero;
     private int anoLancamento;
