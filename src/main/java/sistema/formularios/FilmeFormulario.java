@@ -1,19 +1,20 @@
-package sistema.midias;
+package sistema.formularios;
 
-import sistema.midias.Midia;
+import sistema.midias.Filme;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MidiaFormulario {
+public class FilmeFormulario {
 
 
     // Método criado apenas para melhorar a interface
     // Retorna Midia, senao ele retorna nulo
-    static public Midia criaFormularioBase() {
+    static public Filme criaFormularioBase() {
 
         JTextField tituloField = new JTextField(10);
         JTextField anoField = new JTextField(4);
+        JTextField duracaoField = new JTextField(3);
         JTextField generoField = new JTextField(10);
         JTextField direcaoField = new JTextField(10);
         JTextField sinopseField = new JTextField(20);
@@ -25,6 +26,8 @@ public class MidiaFormulario {
         panel.add(tituloField);
         panel.add(new JLabel("Ano de lançamento:"));
         panel.add(anoField);
+        panel.add(new JLabel("Duração:"));
+        panel.add(duracaoField);
         panel.add(new JLabel("Gênero:"));
         panel.add(generoField);
         panel.add(new JLabel("Direção:"));
@@ -42,12 +45,13 @@ public class MidiaFormulario {
         if (result == JOptionPane.OK_OPTION) {
             String titulo = tituloField.getText();
             int ano = Integer.parseInt(anoField.getText());
+            int duracao = Integer.parseInt(duracaoField.getText());
             String genero = generoField.getText();
             String direcao = direcaoField.getText();
             String sinopse = sinopseField.getText();
             String[] elenco = elencoField.getText().split(",");
 
-            return new Midia(titulo, genero, ano, direcao, elenco, sinopse);
+            return new Filme(titulo, genero, ano, direcao, elenco, sinopse, duracao);
         }
         return null;
     }

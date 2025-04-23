@@ -1,4 +1,6 @@
-package sistema.midias;
+package sistema;
+
+import sistema.midias.Midia;
 
 import java.io.*;
 import java.util.HashMap;
