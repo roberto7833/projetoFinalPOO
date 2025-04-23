@@ -45,25 +45,17 @@ public class GerenciadorDeMidias implements SistemaMultimidia {
         }
         return anoPesq;
     }
-    //teste 1
 
     public Collection<Midia> pesquisarPorGenero(String genero) {
-        Collection<Midia> generoPesq = new ArrayList<>();
-        for(Midia m: midias.values()){
-            if(m.getGenero().equalsIgnoreCase(genero)){
-                generoPesq.add(m);
-            }
-        }
-        return generoPesq;
+        return midias.values().stream()
+                .filter(m -> m.getGenero().equalsIgnoreCase(genero))
+                .toList();
     }
-    public Collection<Midia> pesquisarPorDirecao(String diretor){
-        Collection<Midia> diretorPesq = new ArrayList<>();
-        for(Midia m: midias.values()){
-            if(m.getDirecao().equalsIgnoreCase(diretor)){
-                diretorPesq.add(m);
-            }
-        }
-        return diretorPesq;
+
+    public Collection<Midia> pesquisarPorDirecao(String diretor) {
+        return midias.values().stream()
+                .filter(m -> m.getDirecao().equalsIgnoreCase(diretor))
+                .toList();
     }
 
     public Collection<Midia> mostrarTodasAsMidiasCadastradas() {

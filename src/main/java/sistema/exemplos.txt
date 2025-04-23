@@ -81,3 +81,4 @@
             "Crianças enfrentam criaturas sobrenaturais com a ajuda da energia elétrica e da nostalgia dos anos 80.",
             epsStrangerThings
         );
+

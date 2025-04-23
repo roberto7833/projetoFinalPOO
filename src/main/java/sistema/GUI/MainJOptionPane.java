@@ -3,20 +3,25 @@ package sistema.GUI;
 import sistema.GerenciadorDeMidias;
 import sistema.exceptions.MidiaJaExisteException;
 import sistema.exceptions.MidiaNaoExisteException;
-import sistema.midias.Episodio;
-import sistema.midias.Filme;
-import sistema.midias.Midia;
-import sistema.midias.Serie;
+import sistema.midias.*;
 
 import javax.swing.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainJOptionPane {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        GerenciadorDeMidias sistema = new GerenciadorDeMidias();
+        GerenciadorDeMidias sistema;
+        sistema = new GerenciadorDeMidias();
+        try {
+            sistema.recuperarDados();
+            JOptionPane.showMessageDialog(null, "Dados carregados com sucesso.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível carregar os dados salvos.");
+        }
 
         boolean sair = false;
 
@@ -110,6 +115,7 @@ public class MainJOptionPane {
                     } break;
                 case 6:
                     sair = true;
+                    sistema.salvarDados();
             }
         }
     }
