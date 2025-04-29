@@ -20,7 +20,6 @@ public class MidiaSearchTituloController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         String titulo = JOptionPane.showInputDialog(janelaPrincipal, "qual titulo deseja procurar? ");
-        String genero = JOptionPane.showInputDialog(janelaPrincipal, "qual genero deseja procurar? ");
         //pesquisando por titulo
         Collection<Midia> tituloPesq = sistema.pesquisarPorTitulo(titulo);
         if(tituloPesq.size()>0){

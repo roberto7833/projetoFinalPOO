@@ -2,11 +2,13 @@ package sistema.GUI;
 
 import sistema.SistemaMultimidia;
 import sistema.GerenciadorDeMidias;
+import sistema.midias.GravadorDeDados;
 import sistema.controller.*;
 
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class ProgramaMidiasGUIComMenu extends JFrame{
     JLabel linha1, linha2;
@@ -56,10 +58,16 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         setJMenuBar(barraDeMenu);
     }
 
+
+
     //...
-    public static void main(String [] args){
+    public static void main(String [] args) throws IOException {
+
+
         JFrame janela = new ProgramaMidiasGUIComMenu();
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
     }
 }
