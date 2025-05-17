@@ -13,6 +13,8 @@ import java.io.IOException;
 public class ProgramaMidiasGUIComMenu extends JFrame{
     JLabel linha1, linha2;
     ImageIcon filmeJpg = new ImageIcon("./imgs/filmes.png");
+    Image imagemRedimensionada = filmeJpg.getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH);//adicionando
+    ImageIcon imagemFinal = new ImageIcon(imagemRedimensionada);//adicionando
     SistemaMultimidia midias = new GerenciadorDeMidias();
     JMenuBar barraDeMenu = new JMenuBar();
 
@@ -25,10 +27,16 @@ public class ProgramaMidiasGUIComMenu extends JFrame{
         linha1 = new JLabel("Sistema Filmes/Series", JLabel.CENTER);
         linha1.setForeground(Color.BLACK);
         linha1.setFont(new Font("Serif", Font.BOLD, 24));
-        linha2 = new JLabel(filmeJpg, JLabel.CENTER);
+        //linha2 = new JLabel(filmeJpg, JLabel.CENTER);
+        linha2 = new JLabel(imagemFinal, JLabel.CENTER);//adicionando
+        linha2.setPreferredSize(new Dimension(400, 300)); //adicionando Define espaço adequado para a imagem
+
         setLayout(new GridLayout(3,1));
+
         add(linha1);
         add(linha2);
+
+
         add(new JLabel());
         JMenu menuCadastrar = new JMenu("cadastrar");
         JMenuItem menuCadastrarMidia = new JMenuItem("cadastrar Midia");
